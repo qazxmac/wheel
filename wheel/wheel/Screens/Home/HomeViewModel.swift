@@ -30,6 +30,8 @@ final class HomeViewModel: HomeViewModelProtocol {
     
     var models: [CircleModel] = [] {
         didSet {
+            print("------ \(models)")
+            result = nil
             delegate?.didSetModels()
         }
     }

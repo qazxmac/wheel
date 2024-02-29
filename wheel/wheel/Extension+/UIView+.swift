@@ -31,7 +31,11 @@ extension UIView {
         view.layer.add(rotationAnimation, forKey: "rotationAnimation")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + randomDuration - 1) {
-            print("xxxxxxxxx")
+            NotificationCenter.default.post(name: Notification.Name("ROTATE_ALMOST_DONE_1S"), object: nil)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + randomDuration - 3) {
+            NotificationCenter.default.post(name: Notification.Name("ROTATE_ALMOST_DONE_3S"), object: nil)
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + randomDuration) {
