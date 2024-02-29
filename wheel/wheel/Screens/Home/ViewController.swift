@@ -26,16 +26,26 @@ class ViewController: UIViewController {
     
     @IBAction func tapSelect(_ sender: Any) {
         viewModel.models = [
-            CircleModel(id: Int.random(in: 100...1000), content: "Part 1"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Part 2"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Part 3"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Thanh cong chua"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Part 5"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Part 6"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Part 7"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Part 8"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Part 9"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Part 10"),
+            CircleModel(id: Int.random(in: 100...1000), content: "My y"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Vit quay"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Com chien duong chau"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Banh canh"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Hu tieu"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Com tam"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Banh uot"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Banh hoi heo quay"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Pizza"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Mi vit tiem"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Bun rieu"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Banh canh cha ca"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Chao long"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Mi xao gion"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Bun thai"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Banh xeo"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Goi cuon"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Nhin doi"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Hadilao"),
+            CircleModel(id: Int.random(in: 100...1000), content: "Bo kho"),
         ]
     }
     

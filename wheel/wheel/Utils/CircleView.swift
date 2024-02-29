@@ -12,8 +12,8 @@ class CircleView: UIView {
         }
     }
 
-    let distanceFromEdgeToCenter: CGFloat = 20.0
-    let labelOffset: CGFloat = 5.0
+    let distanceFromEdgeToCenter: CGFloat = 45.0
+    let labelOffset: CGFloat = 15.0
 
     override func draw(_ rect: CGRect) {
         guard let models = dataSource else {
@@ -45,7 +45,7 @@ class CircleView: UIView {
             label.minimumScaleFactor = 0.5 // Adjust the minimum scale factor as needed
             label.lineBreakMode = .byClipping // Use clipping to prevent truncation
 
-            let maxLabelWidth = radius - distanceFromEdgeToCenter - 10
+            let maxLabelWidth = radius - distanceFromEdgeToCenter
             let labelSize = string.size(withAttributes: [NSAttributedString.Key.font: label.font])
             let scaledLabelWidth = min(labelSize.width, maxLabelWidth)
             label.bounds.size = CGSize(width: scaledLabelWidth, height: labelSize.height)
