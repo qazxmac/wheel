@@ -14,6 +14,6 @@ extension UIColor {
         let blue = CGFloat(arc4random_uniform(256)) / 255.0
 //        let alpha = CGFloat(arc4random_uniform(256)) / 255.0
         
-        return UIColor(red: red, green: green, blue: blue, alpha: 1)
+        return UIColor(red: red, green: green, blue: blue, alpha: 0.8)
     }
 }
