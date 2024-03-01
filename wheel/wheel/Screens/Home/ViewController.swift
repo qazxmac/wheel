@@ -74,6 +74,7 @@ class ViewController: UIViewController {
     
     @IBAction func tapStart(_ sender: Any) {
         // Nen den dan
+        uvBlackCorver.alpha = 0.0
         uvBlackCorver.isHidden = false
         UIView.animate(withDuration: 1, animations: { [weak self] in
             self?.uvBlackCorver.alpha = 1.0
