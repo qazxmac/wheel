@@ -104,9 +104,9 @@ extension ViewController: HomeViewModelDelegate {
     func didSetResult() {
         print("=========== \(viewModel.result)")
         
+        lottieCatScratch.isHidden = true
         if let ressult = viewModel.result {
             lblResult.text = ressult.content
-            lottieCatScratch.isHidden = true
             lottieFirework.isHidden = false
             lottieFirework.play()
         } else {

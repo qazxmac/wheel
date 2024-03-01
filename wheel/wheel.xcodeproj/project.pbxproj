@@ -20,6 +20,7 @@
 		849A3A702B90335600122B27 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A3A6F2B90335600122B27 /* UIView+.swift */; };
 		849A3A732B90B55D00122B27 /* cat-scratch.json in Resources */ = {isa = PBXBuildFile; fileRef = 849A3A722B90B55D00122B27 /* cat-scratch.json */; };
 		849A3A792B90C6E800122B27 /* firework.json in Resources */ = {isa = PBXBuildFile; fileRef = 849A3A782B90C6E800122B27 /* firework.json */; };
+		84EB484C2B916B50005CFA33 /* go.json in Resources */ = {isa = PBXBuildFile; fileRef = 84EB484B2B916B50005CFA33 /* go.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		849A3A6F2B90335600122B27 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		849A3A722B90B55D00122B27 /* cat-scratch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cat-scratch.json"; sourceTree = "<group>"; };
 		849A3A782B90C6E800122B27 /* firework.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = firework.json; sourceTree = "<group>"; };
+		84EB484B2B916B50005CFA33 /* go.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = go.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				8478B7EF2B900DAD006AF480 /* SceneDelegate.swift */,
 				849A3A722B90B55D00122B27 /* cat-scratch.json */,
 				849A3A782B90C6E800122B27 /* firework.json */,
+				84EB484B2B916B50005CFA33 /* go.json */,
 			);
 			path = Configs;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				8478B7FA2B900DB1006AF480 /* LaunchScreen.storyboard in Resources */,
 				849A3A732B90B55D00122B27 /* cat-scratch.json in Resources */,
 				8478B7F72B900DB1006AF480 /* Assets.xcassets in Resources */,
+				84EB484C2B916B50005CFA33 /* go.json in Resources */,
 				849A3A792B90C6E800122B27 /* firework.json in Resources */,
 				8478B7F52B900DAE006AF480 /* Main.storyboard in Resources */,
 			);
