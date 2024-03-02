@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var lottieFirework: LottieAnimationView!
     
     
+    
+    
     var viewModel: HomeViewModel = HomeViewModel()
     
     override func viewDidLoad() {
@@ -90,6 +92,16 @@ class ViewController: UIViewController {
             // Cap nhat ket qua
             self.viewModel.updateResult(id: tag)
         }
+    }
+    
+    @IBAction func tapBtnPlus(_ sender: Any) {
+        let vc = ListViewController(nibName: "ListViewController", bundle: nil)
+        self.present(vc, animated: true)
+    }
+    
+    @IBAction func tapBtnEdit(_ sender: Any) {
+        let vc = DetailViewController(nibName: "DetailViewController", bundle: nil)
+        self.present(vc, animated: true)
     }
     
 }
