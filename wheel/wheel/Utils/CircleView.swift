@@ -1,10 +1,5 @@
 import UIKit
 
-struct CircleModel {
-    var id: Int
-    var content: String
-}
-
 class CircleView: UIView {
     var dataSource: [CircleModel]? {
         didSet {
@@ -43,7 +38,7 @@ class CircleView: UIView {
             let string = model.content
             
             let label = UILabel()
-            label.tag = model.id
+            label.accessibilityIdentifier = model.id
             
             let maxLabelWidth = radius - distanceFromEdgeToCenter
             let labelSize = string.size(withAttributes: [NSAttributedString.Key.font: label.font])

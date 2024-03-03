@@ -7,10 +7,13 @@
 
 import Foundation
 
+
+
 protocol HomeViewModelProtocol {
     var models: [CircleModel] { get set }
     var result: CircleModel? { get }
-    func updateResult(id: Int)
+    var selectedItemID: String? { get set }
+    func updateResult(id: String)
 }
 
 protocol HomeViewModelDelegate: AnyObject {
@@ -36,7 +39,13 @@ final class HomeViewModel: HomeViewModelProtocol {
         }
     }
     
-    func updateResult(id: Int) {
+    var selectedItemID: String? {
+        didSet {
+            
+        }
+    }
+    
+    func updateResult(id: String) {
         if let index = models.firstIndex(where:{ $0.id == id }) {
             self.result = models[index]
         }

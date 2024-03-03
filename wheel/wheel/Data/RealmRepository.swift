@@ -1,0 +1,76 @@
+import RealmSwift
+
+class RealmRepository {
+    private let realm: Realm
+    
+    init() throws {
+        realm = try Realm()
+    }
+    
+    // Thêm một đối tượng CircleModel vào cơ sở dữ liệu
+    func addCircle(content: String) throws {
+        let circle = CircleModel()
+        circle.content = content
+        
+        try realm.write {
+            realm.add(circle, update: .modified)
+        }
+    }
+    
+    // Cập nhật nội dung của một đối tượng CircleModel
+    func updateCircleContent(id: Int, newContent: String) throws {
+        if let circle = realm.object(ofType: CircleModel.self, forPrimaryKey: id) {
+            try realm.write {
+                circle.content = newContent
+            }
+        }
+    }
+    
+    // Xóa một đối tượng CircleModel
+    func deleteCircle(id: Int) throws {
+        if let circle = realm.object(ofType: CircleModel.self, forPrimaryKey: id) {
+            try realm.write {
+                realm.delete(circle)
+            }
+        }
+    }
+    
+    // Lấy danh sách tất cả các đối tượng CircleModel
+    func getAllCircles() -> Results<CircleModel> {
+        return realm.objects(CircleModel.self)
+    }
+    
+    // MARK: - DETAIL
+    // Thêm một đối tượng CircleDetailModel vào cơ sở dữ liệu
+    func addCircleDetail(content: String) throws {
+        let circle = CircleDetailModel()
+        circle.content = content
+        
+        try realm.write {
+            realm.add(circle, update: .modified)
+        }
+    }
+    
+    // Cập nhật nội dung của một đối tượng CircleDetailModel
+    func updateCircleContentDetail(id: Int, newContent: String) throws {
+        if let circle = realm.object(ofType: CircleDetailModel.self, forPrimaryKey: id) {
+            try realm.write {
+                circle.content = newContent
+            }
+        }
+    }
+    
+    // Xóa một đối tượng CircleDetailModel
+    func deleteCircleDetail(id: Int) throws {
+        if let circle = realm.object(ofType: CircleDetailModel.self, forPrimaryKey: id) {
+            try realm.write {
+                realm.delete(circle)
+            }
+        }
+    }
+    
+    // Lấy danh sách tất cả các đối tượng CircleDetailModel
+    func getAllCirclesDetail() -> Results<CircleDetailModel> {
+        return realm.objects(CircleDetailModel.self)
+    }
+}

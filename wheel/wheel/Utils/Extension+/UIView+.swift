@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIView {
-    func rotateView(view: UIView, completion: ((_ tag: Int?) -> Void)?) {
+    func rotateView(view: UIView, completion: ((_ id: String?) -> Void)?) {
         let targetAngle = CGFloat(arc4random_uniform(360)) * .pi / 180.0
         let numberOfRotations = CGFloat(arc4random())
         
@@ -60,7 +60,7 @@ extension UIView {
             if let minYSubview = minYSubview {
                 print("Subview with the smallest Oy value: \(minYSubview)")
                 print("TAG: \(minYSubview.tag)")
-                completion?(minYSubview.tag)
+                completion?(minYSubview.accessibilityIdentifier)
             }
             completion?(nil)
         }

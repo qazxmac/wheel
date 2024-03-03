@@ -14,6 +14,8 @@
 		843071042B92C3DF00534FE9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843071022B92C3DF00534FE9 /* DetailViewController.swift */; };
 		843071052B92C3DF00534FE9 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843071032B92C3DF00534FE9 /* DetailViewController.xib */; };
 		843071072B92C3F000534FE9 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843071062B92C3F000534FE9 /* DetailViewModel.swift */; };
+		8430710A2B93147D00534FE9 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843071092B93147D00534FE9 /* Models.swift */; };
+		8430710D2B931CE400534FE9 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8430710C2B931CE400534FE9 /* RealmRepository.swift */; };
 		8478B7EE2B900DAD006AF480 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8478B7ED2B900DAD006AF480 /* AppDelegate.swift */; };
 		8478B7F02B900DAD006AF480 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8478B7EF2B900DAD006AF480 /* SceneDelegate.swift */; };
 		8478B7F22B900DAD006AF480 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8478B7F12B900DAD006AF480 /* ViewController.swift */; };
@@ -27,6 +29,8 @@
 		849A3A732B90B55D00122B27 /* cat-scratch.json in Resources */ = {isa = PBXBuildFile; fileRef = 849A3A722B90B55D00122B27 /* cat-scratch.json */; };
 		849A3A792B90C6E800122B27 /* firework.json in Resources */ = {isa = PBXBuildFile; fileRef = 849A3A782B90C6E800122B27 /* firework.json */; };
 		84EB484C2B916B50005CFA33 /* go.json in Resources */ = {isa = PBXBuildFile; fileRef = 84EB484B2B916B50005CFA33 /* go.json */; };
+		84EEACB02B94532300E61239 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EEACAE2B94532300E61239 /* ListTableViewCell.swift */; };
+		84EEACB12B94532300E61239 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EEACAF2B94532300E61239 /* ListTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +43,8 @@
 		843071022B92C3DF00534FE9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		843071032B92C3DF00534FE9 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		843071062B92C3F000534FE9 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		843071092B93147D00534FE9 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		8430710C2B931CE400534FE9 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		8478B7EA2B900DAD006AF480 /* wheel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wheel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8478B7ED2B900DAD006AF480 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8478B7EF2B900DAD006AF480 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +60,8 @@
 		849A3A722B90B55D00122B27 /* cat-scratch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cat-scratch.json"; sourceTree = "<group>"; };
 		849A3A782B90C6E800122B27 /* firework.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = firework.json; sourceTree = "<group>"; };
 		84EB484B2B916B50005CFA33 /* go.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = go.json; sourceTree = "<group>"; };
+		84EEACAE2B94532300E61239 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		84EEACAF2B94532300E61239 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +94,15 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		843071082B93143700534FE9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				843071092B93147D00534FE9 /* Models.swift */,
+				8430710C2B931CE400534FE9 /* RealmRepository.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		8478B7E12B900DAD006AF480 = {
 			isa = PBXGroup;
 			children = (
@@ -108,9 +125,9 @@
 			isa = PBXGroup;
 			children = (
 				849A3A692B902EDD00122B27 /* Configs */,
-				849A3A682B902ECA00122B27 /* Screens */,
 				849A3A652B902E8300122B27 /* Utils */,
-				849A3A6A2B902F2100122B27 /* Extension+ */,
+				843071082B93143700534FE9 /* Data */,
+				849A3A682B902ECA00122B27 /* Screens */,
 			);
 			path = wheel;
 			sourceTree = "<group>";
@@ -118,6 +135,7 @@
 		849A3A652B902E8300122B27 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				849A3A6A2B902F2100122B27 /* Extension+ */,
 				849A3A632B902E6100122B27 /* CircleView.swift */,
 			);
 			path = Utils;
@@ -178,11 +196,21 @@
 			isa = PBXGroup;
 			children = (
 				843071012B92C3B800534FE9 /* Detail */,
+				84EEACAD2B9452EF00E61239 /* Cells */,
 				843070FC2B92C37800534FE9 /* ListViewController.xib */,
 				843070FB2B92C37800534FE9 /* ListViewController.swift */,
 				843070FF2B92C38E00534FE9 /* ListViewModel.swift */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		84EEACAD2B9452EF00E61239 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				84EEACAE2B94532300E61239 /* ListTableViewCell.swift */,
+				84EEACAF2B94532300E61239 /* ListTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		88BE81CB568F81C0B171FD33 /* Pods */ = {
@@ -258,6 +286,7 @@
 				849A3A732B90B55D00122B27 /* cat-scratch.json in Resources */,
 				843070FE2B92C37800534FE9 /* ListViewController.xib in Resources */,
 				843071052B92C3DF00534FE9 /* DetailViewController.xib in Resources */,
+				84EEACB12B94532300E61239 /* ListTableViewCell.xib in Resources */,
 				8478B7F72B900DB1006AF480 /* Assets.xcassets in Resources */,
 				84EB484C2B916B50005CFA33 /* go.json in Resources */,
 				849A3A792B90C6E800122B27 /* firework.json in Resources */,
@@ -317,10 +346,13 @@
 				849A3A642B902E6100122B27 /* CircleView.swift in Sources */,
 				849A3A6E2B90308300122B27 /* HomeViewModel.swift in Sources */,
 				849A3A702B90335600122B27 /* UIView+.swift in Sources */,
+				8430710A2B93147D00534FE9 /* Models.swift in Sources */,
 				8478B7F22B900DAD006AF480 /* ViewController.swift in Sources */,
 				8478B7EE2B900DAD006AF480 /* AppDelegate.swift in Sources */,
 				843071002B92C38E00534FE9 /* ListViewModel.swift in Sources */,
+				84EEACB02B94532300E61239 /* ListTableViewCell.swift in Sources */,
 				8478B7F02B900DAD006AF480 /* SceneDelegate.swift in Sources */,
+				8430710D2B931CE400534FE9 /* RealmRepository.swift in Sources */,
 				843071042B92C3DF00534FE9 /* DetailViewController.swift in Sources */,
 				843070FD2B92C37800534FE9 /* ListViewController.swift in Sources */,
 				843071072B92C3F000534FE9 /* DetailViewModel.swift in Sources */,

@@ -49,32 +49,28 @@ class ViewController: UIViewController {
  
     
     @IBAction func tapSelect(_ sender: Any) {
-        viewModel.models = [
-            CircleModel(id: Int.random(in: 100...1000), content: "My y"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Vit quay"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Com chien duong chau"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Banh canh"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Hu tieu"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Com tam"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Banh uot"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Banh hoi heo quay"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Pizza"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Mi vit tiem"),
-            CircleModel(id: Int.random(in: 100...1000), content: "Bun rieu"),
-//            CircleModel(id: Int.random(in: 100...1000), content: "Banh canh cha ca"),
-//            CircleModel(id: Int.random(in: 100...1000), content: "Chao long"),
-//            CircleModel(id: Int.random(in: 100...1000), content: "Mi xao gion"),
-//            CircleModel(id: Int.random(in: 100...1000), content: "Bun thai"),
-//            CircleModel(id: Int.random(in: 100...1000), content: "Banh xeo"),
-//            CircleModel(id: Int.random(in: 100...1000), content: "Goi cuon"),
-//            CircleModel(id: Int.random(in: 100...1000), content: "Nhin doi"),
-//            CircleModel(id: Int.random(in: 100...1000), content: "Hadilao"),
-//            CircleModel(id: Int.random(in: 100...1000), content: "Bo kho"),
-        ]
+        
         
     }
     
     @IBAction func tapStart(_ sender: Any) {
+        
+        // Tạo một đối tượng CircleModel
+        let total: Int = Int.random(in: 5...15)
+        var models: [CircleModel] = []
+        for i in 0...total {
+            let circle = CircleModel()
+            let randomID = Int.random(in: 100...1000)
+            circle.content = UUID().uuidString
+            
+            models.append(circle)
+        }
+        
+        viewModel.models = models
+        
+        
+        
+        
         // Nen den dan
         uvBlackCorver.alpha = 0.0
         uvBlackCorver.isHidden = false
@@ -85,18 +81,21 @@ class ViewController: UIViewController {
         lblResult.text?.removeAll()
         lottieFirework.isHidden = true
         
-        circleView.rotateView(view: circleView) { [weak self] tag in
+        circleView.rotateView(view: circleView) { [weak self] id in
             // Xoa nen den
             self?.uvBlackCorver.isHidden = true
-            guard let self = self, let tag = tag else { return }
+            guard let self = self, let id = id else { return }
             // Cap nhat ket qua
-            self.viewModel.updateResult(id: tag)
+            self.viewModel.updateResult(id: id)
         }
     }
     
     @IBAction func tapBtnPlus(_ sender: Any) {
         let vc = ListViewController(nibName: "ListViewController", bundle: nil)
-        self.present(vc, animated: true)
+        vc.modalTransitionStyle = .flipHorizontal
+        let nav = UINavigationController(rootViewController: vc)
+        nav.isNavigationBarHidden = true
+        self.present(nav, animated: true)
     }
     
     @IBAction func tapBtnEdit(_ sender: Any) {
