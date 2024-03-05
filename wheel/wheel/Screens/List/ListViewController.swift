@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Lottie
 
 class ListViewController: UIViewController {
+    
+    @IBOutlet weak var lottieButton: LottieAnimationView!
     
     @IBOutlet weak var tbvList: UITableView!
     
@@ -15,6 +18,8 @@ class ListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        lottieButton.loopMode = .loop
 
         vm.delegate = self
         tbvList.dataSource = self
@@ -26,16 +31,20 @@ class ListViewController: UIViewController {
         
     }
     
-    func moveToDetail() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        lottieButton.play()
+    }
+    
+    func moveToDetail(selectedItem: CircleModel) {
         let vc = DetailViewController()
+        vc.vm.parentItem = selectedItem
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func tapAdd(_ sender: Any) {
-        moveToDetail()
+        moveToDetail(selectedItem: CircleModel())
     }
-    
-    
 }
 
 extension ListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -45,9 +54,13 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
-        cell.lblTitle.text = vm.items[indexPath.row].id
+        let selectedItem = vm.items[indexPath.row]
+        cell.lblTitle.text = selectedItem.id
         cell.onTap = { [weak self] in
-            self?.moveToDetail()
+            self?.moveToDetail(selectedItem: selectedItem)
+        }
+        cell.onDelete = { [weak self] in
+            self?.vm.delete(at: indexPath.row)
         }
         return cell
     }

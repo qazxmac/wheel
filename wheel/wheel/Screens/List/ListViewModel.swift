@@ -23,6 +23,8 @@ final class ListViewModel {
         }
     }
     
+    var selectedItem: CircleModel = CircleModel()
+    
     func add(content: String) {
         do {
             let repository = try RealmRepository()
@@ -45,15 +47,17 @@ final class ListViewModel {
         }
     }
     
-    func delete(id: Int) {
+    func delete(at index: Int) {
+        // Remove on local DB
+        let id = items[index].id
         do {
             let repository = try RealmRepository()
-            // Xóa đối tượng CircleModel có id là 1
             try repository.deleteCircle(id: id)
         } catch {
-            // Xử lý lỗi
             print("Error: \(error)")
         }
+        // Remove on datasource array
+        items.remove(at: index)
     }
     
     func loadAll() {

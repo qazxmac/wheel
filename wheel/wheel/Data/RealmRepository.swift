@@ -27,7 +27,7 @@ class RealmRepository {
     }
     
     // Xóa một đối tượng CircleModel
-    func deleteCircle(id: Int) throws {
+    func deleteCircle(id: String) throws {
         if let circle = realm.object(ofType: CircleModel.self, forPrimaryKey: id) {
             try realm.write {
                 realm.delete(circle)
@@ -40,25 +40,30 @@ class RealmRepository {
         return realm.objects(CircleModel.self)
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
     // MARK: - DETAIL
     // Thêm một đối tượng CircleDetailModel vào cơ sở dữ liệu
-    func addCircleDetail(content: String) throws {
-        let circle = CircleDetailModel()
-        circle.content = content
-        
+    func addCircleDetail(itemOption: CircleDetailModel) throws {
         try realm.write {
-            realm.add(circle, update: .modified)
+            realm.add(itemOption, update: .modified)
         }
     }
-    
-    // Cập nhật nội dung của một đối tượng CircleDetailModel
-    func updateCircleContentDetail(id: Int, newContent: String) throws {
-        if let circle = realm.object(ofType: CircleDetailModel.self, forPrimaryKey: id) {
-            try realm.write {
-                circle.content = newContent
-            }
-        }
-    }
+//    
+//    // Cập nhật nội dung của một đối tượng CircleDetailModel
+//    func updateCircleContentDetail(itemOption: CircleDetailModel) throws {
+//        if let circle = realm.object(ofType: CircleDetailModel.self, forPrimaryKey: itemOption.id) {
+//            try realm.write {
+//                circle.content = newContent
+//            }
+//        }
+//    }
     
     // Xóa một đối tượng CircleDetailModel
     func deleteCircleDetail(id: Int) throws {

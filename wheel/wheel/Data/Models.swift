@@ -18,6 +18,7 @@ class CircleModel: Object {
 
 class CircleDetailModel: Object {
     @objc dynamic var id: String = UUID().uuidString
+    @objc dynamic var idQuestion: String = ""
     @objc dynamic var content: String = ""
     
     override static func primaryKey() -> String? {

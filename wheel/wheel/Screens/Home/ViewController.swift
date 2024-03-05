@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lottieCatScratch: LottieAnimationView!
     @IBOutlet weak var lottieFirework: LottieAnimationView!
     
-    
+    var vc: ListViewController?
     
     
     var viewModel: HomeViewModel = HomeViewModel()
@@ -33,6 +33,10 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification3s), name: Notification.Name("ROTATE_ALMOST_DONE_3S"), object: nil)
         // Đăng ký nhận thông báo
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification1s), name: Notification.Name("ROTATE_ALMOST_DONE_1S"), object: nil)
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.vc = ListViewController(nibName: "ListViewController", bundle: nil)
+        }
     }
 
     // Xử lý thông báo
@@ -91,11 +95,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapBtnPlus(_ sender: Any) {
-        let vc = ListViewController(nibName: "ListViewController", bundle: nil)
-        vc.modalTransitionStyle = .flipHorizontal
-        let nav = UINavigationController(rootViewController: vc)
-        nav.isNavigationBarHidden = true
-        self.present(nav, animated: true)
+
+//        vc.modalTransitionStyle = .partialCurl
+        if let vc = self.vc {
+            let nav = UINavigationController(rootViewController: vc)
+            nav.isNavigationBarHidden = true
+            nav.modalTransitionStyle = .flipHorizontal
+            self.present(nav, animated: true)
+        }
+
     }
     
     @IBAction func tapBtnEdit(_ sender: Any) {
