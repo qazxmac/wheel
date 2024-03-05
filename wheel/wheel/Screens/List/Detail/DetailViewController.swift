@@ -70,9 +70,17 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as! DetailTableViewCell
+        var data = vm.items[indexPath.row]
+        cell.tfValue.text = data.content
         cell.onTapDelete = { [weak self] in
             self?.vm.removePiece(at: indexPath.row)
         }
+        cell.onChangeValue = {[weak self] text in
+            print(text)
+            data.content = text
+            self?.vm.updatePiece(value: data, at: indexPath.row)
+        }
+        cell.tfValue.delegate = self
         return cell
     }
     
@@ -83,6 +91,21 @@ extension DetailViewController: DetailViewModelDelegate {
     func didChangeItems() {
         print("vvvvvvvv")
         tbvDetail.reloadData()
-        
     }
+}
+
+extension DetailViewController: UITextFieldDelegate {
+    
+    // Phương thức gọi khi nút "Done" trên bàn phím được bấm
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Ẩn bàn phím
+        textField.resignFirstResponder()
+        
+        // Xử lý logic khi bấm nút "Done" ở đây
+        
+        return true
+    }
+    
+
+    
 }

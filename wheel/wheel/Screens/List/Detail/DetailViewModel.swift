@@ -17,11 +17,7 @@ final class DetailViewModel {
     var items: [CircleDetailModel] = [
         CircleDetailModel(),
         CircleDetailModel(),
-    ] {
-        didSet {
-            delegate?.didChangeItems()
-        }
-    }
+    ]
     var parentItem: CircleModel = CircleModel()
     
     
@@ -31,9 +27,17 @@ final class DetailViewModel {
         newPiece.idQuestion = parentItem.id
         
         items.append(newPiece)
+        delegate?.didChangeItems()
     }
     
     func removePiece(at index: Int) {
         items.remove(at: index)
+        delegate?.didChangeItems()
     }
+    
+    func updatePiece(value: CircleDetailModel, at index: Int) {
+        items.remove(at: index)
+        items.insert(value, at: index)
+    }
+    
 }

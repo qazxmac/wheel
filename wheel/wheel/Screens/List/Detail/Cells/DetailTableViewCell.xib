@@ -28,7 +28,7 @@
                                         <rect key="frame" x="0.0" y="5" width="261" height="34"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -62,6 +62,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="tfValue" destination="uqX-8Q-oMD" id="vMN-6L-d1c"/>
+            </connections>
             <point key="canvasLocation" x="41" y="-12"/>
         </tableViewCell>
     </objects>
