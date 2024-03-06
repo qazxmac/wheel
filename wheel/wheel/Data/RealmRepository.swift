@@ -55,18 +55,9 @@ class RealmRepository {
             realm.add(itemOption, update: .modified)
         }
     }
-//    
-//    // Cập nhật nội dung của một đối tượng CircleDetailModel
-//    func updateCircleContentDetail(itemOption: CircleDetailModel) throws {
-//        if let circle = realm.object(ofType: CircleDetailModel.self, forPrimaryKey: itemOption.id) {
-//            try realm.write {
-//                circle.content = newContent
-//            }
-//        }
-//    }
     
     // Xóa một đối tượng CircleDetailModel
-    func deleteCircleDetail(id: Int) throws {
+    func deleteCircleDetail(id: String) throws {
         if let circle = realm.object(ofType: CircleDetailModel.self, forPrimaryKey: id) {
             try realm.write {
                 realm.delete(circle)
@@ -77,5 +68,9 @@ class RealmRepository {
     // Lấy danh sách tất cả các đối tượng CircleDetailModel
     func getAllCirclesDetail() -> Results<CircleDetailModel> {
         return realm.objects(CircleDetailModel.self)
+    }
+    
+    func fetchPieces(idQuestion: String) throws -> Results<CircleDetailModel> {
+        return realm.objects(CircleDetailModel.self).filter("idQuestion == %@", idQuestion)
     }
 }

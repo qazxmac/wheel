@@ -101,6 +101,7 @@ class ViewController: UIViewController {
             let nav = UINavigationController(rootViewController: vc)
             nav.isNavigationBarHidden = true
             nav.modalTransitionStyle = .flipHorizontal
+            nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true)
         }
 

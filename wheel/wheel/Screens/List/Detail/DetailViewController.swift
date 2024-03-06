@@ -26,13 +26,14 @@ class DetailViewController: UIViewController {
         tbvDetail.register(UINib(nibName: "DetailMoreTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailMoreTableViewCell")
         tbvDetail.rowHeight = 60.0
         vm.delegate = self
+        vm.fetchPieces()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         lottieButton.play()
-        tfTitle.placeholder = vm.parentItem.content
+        tfTitle.text = vm.parentItem.content
     }
 
 
@@ -41,6 +42,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func tapClose(_ sender: Any) {
+        vm.save()
         if let nav = self.navigationController {
             nav.dismiss(animated: true)
         }
@@ -60,6 +62,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
+        // Cell cuoi la dau +
         if indexPath.row == vm.items.count {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailMoreTableViewCell", for: indexPath) as! DetailMoreTableViewCell
             cell.onTapPlus = { [weak self] in
@@ -69,17 +72,22 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
         
+        // Cac cell con lai
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailTableViewCell", for: indexPath) as! DetailTableViewCell
-        var data = vm.items[indexPath.row]
+        
+        let data = vm.items[indexPath.row]
         cell.tfValue.text = data.content
+        
         cell.onTapDelete = { [weak self] in
             self?.vm.removePiece(at: indexPath.row)
         }
+        
         cell.onChangeValue = {[weak self] text in
             print(text)
             data.content = text
             self?.vm.updatePiece(value: data, at: indexPath.row)
         }
+        
         cell.tfValue.delegate = self
         return cell
     }
@@ -89,8 +97,8 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension DetailViewController: DetailViewModelDelegate {
     func didChangeItems() {
-        print("vvvvvvvv")
         tbvDetail.reloadData()
+        print("============= \(vm.items)")
     }
 }
 
