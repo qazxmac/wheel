@@ -16,12 +16,12 @@ final class DetailViewModel {
     weak var delegate: DetailViewModelDelegate?
     var items: [CircleDetailModel] = []
     var itemsNeedDelete: [String] = []
-    var parentItem: CircleModel = CircleModel()
-    
-    init() {
-
+    var parentItem: CircleModel = CircleModel() {
+        didSet {
+            parentTitle = parentItem.content
+        }
     }
-    
+    var parentTitle: String = "Unnamed"
     
     func createNewPeace() {
         let newPiece = CircleDetailModel()
@@ -39,9 +39,13 @@ final class DetailViewModel {
         delegate?.didChangeItems()
     }
     
-    func updatePiece(value: CircleDetailModel, at index: Int) {
+    func updatePiece(value: String, at index: Int) {
+        let newValue = CircleDetailModel()
+        newValue.id = items[index].id
+        newValue.idQuestion = items[index].idQuestion
+        newValue.content = value
         items.remove(at: index)
-        items.insert(value, at: index)
+        items.insert(newValue, at: index)
     }
     
     
@@ -71,8 +75,14 @@ final class DetailViewModel {
     func save() {
         do {
             
-            // Luu items
             let repository = try RealmRepository()
+            // Luu Title
+            let parrent = CircleModel()
+            parrent.id = parentItem.id
+            parrent.content = self.parentTitle
+            try repository.addCircle(circle: parrent)
+            
+            // Luu gia tri
             try items.forEach { item in
                 try repository.addCircleDetail(itemOption: item)
             }

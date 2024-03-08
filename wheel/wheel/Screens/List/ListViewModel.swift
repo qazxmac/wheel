@@ -25,27 +25,27 @@ final class ListViewModel {
     
     var selectedItem: CircleModel = CircleModel()
     
-    func add(content: String) {
-        do {
-            let repository = try RealmRepository()
-            // Thêm một đối tượng CircleModel vào cơ sở dữ liệu
-            try! repository.addCircle(content: content)
-        } catch {
-            // Xử lý lỗi
-            print("Error: \(error)")
-        }
-    }
-    
-    func edit(id: Int, newContent: String) {
-        do {
-            let repository = try RealmRepository()
-            // Cập nhật nội dung của đối tượng CircleModel có id là 1
-            try repository.updateCircleContent(id: id, newContent: newContent)
-        } catch {
-            // Xử lý lỗi
-            print("Error: \(error)")
-        }
-    }
+//    func add(content: String) {
+//        do {
+//            let repository = try RealmRepository()
+//            // Thêm một đối tượng CircleModel vào cơ sở dữ liệu
+//            try! repository.addCircle(content: content)
+//        } catch {
+//            // Xử lý lỗi
+//            print("Error: \(error)")
+//        }
+//    }
+//    
+//    func edit(id: Int, newContent: String) {
+//        do {
+//            let repository = try RealmRepository()
+//            // Cập nhật nội dung của đối tượng CircleModel có id là 1
+//            try repository.updateCircleContent(id: id, newContent: newContent)
+//        } catch {
+//            // Xử lý lỗi
+//            print("Error: \(error)")
+//        }
+//    }
     
     func delete(at index: Int) {
         // Remove on local DB

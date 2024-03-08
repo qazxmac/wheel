@@ -8,10 +8,7 @@ class RealmRepository {
     }
     
     // Thêm một đối tượng CircleModel vào cơ sở dữ liệu
-    func addCircle(content: String) throws {
-        let circle = CircleModel()
-        circle.content = content
-        
+    func addCircle(circle: CircleModel) throws {
         try realm.write {
             realm.add(circle, update: .modified)
         }

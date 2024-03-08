@@ -25,6 +25,7 @@ class DetailViewController: UIViewController {
         tbvDetail.register(UINib(nibName: "DetailTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailTableViewCell")
         tbvDetail.register(UINib(nibName: "DetailMoreTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailMoreTableViewCell")
         tbvDetail.rowHeight = 60.0
+        tfTitle.delegate = self
         vm.delegate = self
         vm.fetchPieces()
     }
@@ -33,7 +34,7 @@ class DetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         lottieButton.play()
-        tfTitle.text = vm.parentItem.content
+        tfTitle.text = vm.parentTitle
     }
 
 
@@ -84,8 +85,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.onChangeValue = {[weak self] text in
             print(text)
-            data.content = text
-            self?.vm.updatePiece(value: data, at: indexPath.row)
+            self?.vm.updatePiece(value: text, at: indexPath.row)
         }
         
         cell.tfValue.delegate = self
@@ -114,6 +114,20 @@ extension DetailViewController: UITextFieldDelegate {
         return true
     }
     
-
+    // Phương thức gọi mỗi khi có ký tự nhập vào textField
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Lấy giá trị của textField sau khi nhập ký tự mới
+        if let text = textField.text,
+           let range = Range(range, in: text) {
+            let updatedText = text.replacingCharacters(in: range, with: string)
+            
+            // Xử lý logic với updatedText ở đây
+            
+            print(updatedText)
+            vm.parentTitle = updatedText
+        }
+        
+        return true
+    }
     
 }

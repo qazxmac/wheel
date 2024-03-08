@@ -29,9 +29,20 @@
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3F-s4-9iG">
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSD-d6-fP3">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system" title=" "/>
+                                        </button>
+                                    </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="100" id="1K4-32-A2h"/>
+                                        <constraint firstItem="bSD-d6-fP3" firstAttribute="top" secondItem="F3F-s4-9iG" secondAttribute="top" id="Fzi-HE-DC4"/>
+                                        <constraint firstAttribute="bottom" secondItem="bSD-d6-fP3" secondAttribute="bottom" id="tCv-hx-cE6"/>
+                                        <constraint firstItem="bSD-d6-fP3" firstAttribute="leading" secondItem="F3F-s4-9iG" secondAttribute="leading" id="tQL-oa-ihq"/>
+                                        <constraint firstAttribute="trailing" secondItem="bSD-d6-fP3" secondAttribute="trailing" id="u2s-7d-H9o"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Juz-8r-B96">
@@ -45,6 +56,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="Close"/>
+                                            <connections>
+                                                <action selector="tapClose:" destination="-1" eventType="touchUpInside" id="3S7-Mx-uNk"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -121,7 +135,11 @@
             <point key="canvasLocation" x="117" y="-12"/>
         </view>
     </objects>
+    <designables>
+        <designable name="0yf-pe-aDG"/>
+    </designables>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

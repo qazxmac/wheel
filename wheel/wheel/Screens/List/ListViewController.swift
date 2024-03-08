@@ -26,14 +26,12 @@ class ListViewController: UIViewController {
         tbvList.delegate = self
         tbvList.register(UINib(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: "ListTableViewCell")
         tbvList.rowHeight = 60.0
-        vm.add(content: "aaaaaaaaa")
-        self.vm.loadAll()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         lottieButton.play()
+        self.vm.loadAll()
     }
     
     func moveToDetail(selectedItem: CircleModel) {
@@ -45,6 +43,14 @@ class ListViewController: UIViewController {
     @IBAction func tapAdd(_ sender: Any) {
         moveToDetail(selectedItem: CircleModel())
     }
+    
+    @IBAction func tapClose(_ sender: Any) {
+        if let nav = self.navigationController {
+            nav.dismiss(animated: true)
+        }
+        self.dismiss(animated: true)
+    }
+    
 }
 
 extension ListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -55,7 +61,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
         let selectedItem = vm.items[indexPath.row]
-        cell.lblTitle.text = selectedItem.id
+        cell.lblTitle.text = selectedItem.content
         cell.onTap = { [weak self] in
             self?.moveToDetail(selectedItem: selectedItem)
         }
