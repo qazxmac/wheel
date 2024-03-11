@@ -6,12 +6,9 @@
 //
 
 import UIKit
-import Lottie
 
 class ListViewController: UIViewController {
-    
-    @IBOutlet weak var lottieButton: LottieAnimationView!
-    
+
     @IBOutlet weak var tbvList: UITableView!
     
     let vm: ListViewModel = ListViewModel()
@@ -19,8 +16,6 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lottieButton.loopMode = .loop
-
         vm.delegate = self
         tbvList.dataSource = self
         tbvList.delegate = self
@@ -30,7 +25,6 @@ class ListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        lottieButton.play()
         self.vm.loadAll()
     }
     
@@ -60,10 +54,15 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
-        let selectedItem = vm.items[indexPath.row]
-        cell.lblTitle.text = selectedItem.content
+        let data = vm.items[indexPath.row]
+        cell.lblTitle.text = data.content
+        
+        let selectedID = UserDefaults.standard.string(forKey: "selected.id") ?? ""
+        
+        cell.imvSelection.image = (data.id == selectedID) ? UIImage(systemName: "checkmark.circle.fill") : UIImage(systemName: "circle")
+        
         cell.onTap = { [weak self] in
-            self?.moveToDetail(selectedItem: selectedItem)
+            self?.moveToDetail(selectedItem: data)
         }
         cell.onDelete = { [weak self] in
             self?.vm.delete(at: indexPath.row)

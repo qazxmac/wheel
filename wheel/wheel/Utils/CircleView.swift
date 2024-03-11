@@ -1,7 +1,7 @@
 import UIKit
 
 class CircleView: UIView {
-    var dataSource: [CircleModel]? {
+    var dataSource: [CircleDetailModel]? {
         didSet {
             setNeedsDisplay()
         }

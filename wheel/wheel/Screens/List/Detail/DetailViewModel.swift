@@ -91,6 +91,7 @@ final class DetailViewModel {
             try itemsNeedDelete.forEach { id in
                 try repository.deleteCircleDetail(id: id)
             }
+            UserDefaults.standard.set(self.parentItem.id, forKey: "selected.id")
         } catch {
             // Xử lý lỗi
             print("Error: \(error)")

@@ -37,7 +37,9 @@ class RealmRepository {
         return realm.objects(CircleModel.self)
     }
     
-    
+    func fetCircle(id: String) throws -> Results<CircleModel> {
+        return realm.objects(CircleModel.self).filter("id == %@", id)
+    }
     
     
     

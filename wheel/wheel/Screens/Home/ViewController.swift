@@ -16,16 +16,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var lblResult: UILabel!
     @IBOutlet weak var lottieCatScratch: LottieAnimationView!
     @IBOutlet weak var lottieFirework: LottieAnimationView!
+    @IBOutlet weak var lblList: UILabel!
     
     var vc: ListViewController?
     
     
-    var viewModel: HomeViewModel = HomeViewModel()
+    var vm: HomeViewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.delegate = self
+        vm.delegate = self
         lottieCatScratch.loopMode = .playOnce
         lottieFirework.loopMode = .loop
         
@@ -37,6 +38,12 @@ class ViewController: UIViewController {
         DispatchQueue.main.async { [weak self] in
             self?.vc = ListViewController(nibName: "ListViewController", bundle: nil)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        vm.fetchPieces()
     }
 
     // Xử lý thông báo
@@ -59,20 +66,20 @@ class ViewController: UIViewController {
     
     @IBAction func tapStart(_ sender: Any) {
         
-        // Tạo một đối tượng CircleModel
-        let total: Int = Int.random(in: 5...15)
-        var models: [CircleModel] = []
-        for i in 0...total {
-            let circle = CircleModel()
-            let randomID = Int.random(in: 100...1000)
-            circle.content = UUID().uuidString
-            
-            models.append(circle)
-        }
-        
-        viewModel.models = models
-        
-        
+//        // Tạo một đối tượng CircleModel
+//        let total: Int = Int.random(in: 5...15)
+//        var models: [CircleModel] = []
+//        for i in 0...total {
+//            let circle = CircleModel()
+//            let randomID = Int.random(in: 100...1000)
+//            circle.content = UUID().uuidString
+//            
+//            models.append(circle)
+//        }
+//        
+//        viewModel.models = models
+//        
+//        
         
         
         // Nen den dan
@@ -90,7 +97,7 @@ class ViewController: UIViewController {
             self?.uvBlackCorver.isHidden = true
             guard let self = self, let id = id else { return }
             // Cap nhat ket qua
-            self.viewModel.updateResult(id: id)
+            self.vm.updateResult(id: id)
         }
     }
     
@@ -119,14 +126,16 @@ class ViewController: UIViewController {
 
 extension ViewController: HomeViewModelDelegate {
     func didSetModels() {
-        circleView.dataSource = viewModel.models
+        circleView.dataSource = vm.models
+        lottieFirework.isHidden = true
+        lblList.text = vm.titleList
     }
     
     func didSetResult() {
-        print("=========== \(viewModel.result)")
+        print("=========== \(vm.result)")
         
         lottieCatScratch.isHidden = true
-        if let ressult = viewModel.result {
+        if let ressult = vm.result {
             lblResult.text = ressult.content
             lottieFirework.isHidden = false
             lottieFirework.play()

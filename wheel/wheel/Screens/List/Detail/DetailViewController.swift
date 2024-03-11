@@ -6,11 +6,8 @@
 //
 
 import UIKit
-import Lottie
 
 class DetailViewController: UIViewController {
-    
-    @IBOutlet weak var lottieButton: LottieAnimationView!
     @IBOutlet weak var tfTitle: UITextField!
     @IBOutlet weak var tbvDetail: UITableView!
     
@@ -19,7 +16,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lottieButton.loopMode = .loop
         tbvDetail.dataSource = self
         tbvDetail.delegate = self
         tbvDetail.register(UINib(nibName: "DetailTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailTableViewCell")
@@ -33,7 +29,6 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        lottieButton.play()
         tfTitle.text = vm.parentTitle
     }
 
@@ -48,10 +43,6 @@ class DetailViewController: UIViewController {
             nav.dismiss(animated: true)
         }
         self.dismiss(animated: true)
-    }
-    
-    @IBAction func tapSpace(_ sender: Any) {
-        self.view.endEditing(true)
     }
     
     
@@ -87,8 +78,6 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             print(text)
             self?.vm.updatePiece(value: text, at: indexPath.row)
         }
-        
-        cell.tfValue.delegate = self
         return cell
     }
     
