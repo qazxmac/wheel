@@ -58,6 +58,7 @@ final class ListViewModel {
         }
         // Remove on datasource array
         items.remove(at: index)
+        NotificationCenter.default.post(name: Notification.Name("RELOAD_HOME"), object: nil)
     }
     
     func loadAll() {

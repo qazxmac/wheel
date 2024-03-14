@@ -16,6 +16,9 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         tbvDetail.dataSource = self
         tbvDetail.delegate = self
         tbvDetail.register(UINib(nibName: "DetailTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailTableViewCell")
@@ -30,11 +33,33 @@ class DetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         tfTitle.text = vm.parentTitle
+        if let title = tfTitle.text, title.isEmpty {
+            tfTitle.becomeFirstResponder()
+        }
+        if vm.parentTitle == "Unnamed" {
+            tfTitle.placeholder = "Unnamed"
+            tfTitle.text = ""
+            tfTitle.becomeFirstResponder()
+        }
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            tbvDetail.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        tbvDetail.contentInset = UIEdgeInsets.zero
     }
 
 
     @IBAction func tapBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if let nav = self.navigationController {
+            nav.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true)
+        }
     }
     
     @IBAction func tapClose(_ sender: Any) {
@@ -69,6 +94,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         
         let data = vm.items[indexPath.row]
         cell.tfValue.text = data.content
+        cell.tfValue.placeholder = "Option \(indexPath.row+1)"
         
         cell.onTapDelete = { [weak self] in
             self?.vm.removePiece(at: indexPath.row)
@@ -78,6 +104,8 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             print(text)
             self?.vm.updatePiece(value: text, at: indexPath.row)
         }
+        
+        cell.tfValue.delegate = self
         return cell
     }
     
@@ -105,6 +133,9 @@ extension DetailViewController: UITextFieldDelegate {
     
     // Phương thức gọi mỗi khi có ký tự nhập vào textField
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField != tfTitle { return true }
+        
         // Lấy giá trị của textField sau khi nhập ký tự mới
         if let text = textField.text,
            let range = Range(range, in: text) {
@@ -117,6 +148,10 @@ extension DetailViewController: UITextFieldDelegate {
         }
         
         return true
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.view.endEditing(true)
     }
     
 }

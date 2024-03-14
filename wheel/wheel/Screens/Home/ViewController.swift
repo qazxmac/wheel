@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lottieFirework: LottieAnimationView!
     @IBOutlet weak var lblList: UILabel!
     
-    var vc: ListViewController?
+    var vcListViewController: ListViewController?
     
     
     var vm: HomeViewModel = HomeViewModel()
@@ -27,6 +27,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         vm.delegate = self
+        vm.loadData()
         lottieCatScratch.loopMode = .playOnce
         lottieFirework.loopMode = .loop
         
@@ -34,16 +35,12 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification3s), name: Notification.Name("ROTATE_ALMOST_DONE_3S"), object: nil)
         // Đăng ký nhận thông báo
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification1s), name: Notification.Name("ROTATE_ALMOST_DONE_1S"), object: nil)
+        // Đăng ký nhận thông báo
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNotificationReloadHome), name: Notification.Name("RELOAD_HOME"), object: nil)
         
         DispatchQueue.main.async { [weak self] in
-            self?.vc = ListViewController(nibName: "ListViewController", bundle: nil)
+            self?.vcListViewController = ListViewController(nibName: "ListViewController", bundle: nil)
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        vm.fetchPieces()
     }
 
     // Xử lý thông báo
@@ -57,30 +54,23 @@ class ViewController: UIViewController {
         lottieCatScratch.isHidden = false
         lottieCatScratch.play()
     }
+    
+    @objc func handleNotificationReloadHome() {
+        vm.loadData()
+    }
  
     
     @IBAction func tapSelect(_ sender: Any) {
-        
-        
+        if let vc = self.vcListViewController {
+            let nav = UINavigationController(rootViewController: vc)
+            nav.isNavigationBarHidden = true
+            nav.modalTransitionStyle = .flipHorizontal
+            nav.modalPresentationStyle = .overFullScreen
+            self.present(nav, animated: true)
+        }
     }
     
     @IBAction func tapStart(_ sender: Any) {
-        
-//        // Tạo một đối tượng CircleModel
-//        let total: Int = Int.random(in: 5...15)
-//        var models: [CircleModel] = []
-//        for i in 0...total {
-//            let circle = CircleModel()
-//            let randomID = Int.random(in: 100...1000)
-//            circle.content = UUID().uuidString
-//            
-//            models.append(circle)
-//        }
-//        
-//        viewModel.models = models
-//        
-//        
-        
         
         // Nen den dan
         uvBlackCorver.alpha = 0.0
@@ -102,20 +92,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapBtnPlus(_ sender: Any) {
-
-//        vc.modalTransitionStyle = .partialCurl
-        if let vc = self.vc {
-            let nav = UINavigationController(rootViewController: vc)
-            nav.isNavigationBarHidden = true
-            nav.modalTransitionStyle = .flipHorizontal
-            nav.modalPresentationStyle = .fullScreen
-            self.present(nav, animated: true)
-        }
-
+        let vc = DetailViewController()
+        vc.vm.parentItem = CircleModel()
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true)
     }
     
     @IBAction func tapBtnEdit(_ sender: Any) {
+        guard let parentItem = vm.selectedItem else { return }
         let vc = DetailViewController(nibName: "DetailViewController", bundle: nil)
+        vc.vm.parentItem = parentItem
+        vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: true)
     }
     
@@ -128,7 +115,7 @@ extension ViewController: HomeViewModelDelegate {
     func didSetModels() {
         circleView.dataSource = vm.models
         lottieFirework.isHidden = true
-        lblList.text = vm.titleList
+        lblList.text = vm.selectedItem?.content
     }
     
     func didSetResult() {

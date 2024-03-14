@@ -57,12 +57,16 @@ final class DetailViewModel {
             if !fetchedData.isEmpty {
                 self.items = fetchedData
             } else {
-                // Add 2 default empty pieces
+                // Add 4 default empty pieces
                 let piece0 = CircleDetailModel()
                 piece0.idQuestion = parentItem.id
                 let piece1 = CircleDetailModel()
                 piece1.idQuestion = parentItem.id
-                self.items = [piece0,piece1]
+                let piece2 = CircleDetailModel()
+                piece2.idQuestion = parentItem.id
+                let piece3 = CircleDetailModel()
+                piece3.idQuestion = parentItem.id
+                self.items = [piece0,piece1,piece2,piece3]
             }
             delegate?.didChangeItems()
             print(self.items)
@@ -92,9 +96,14 @@ final class DetailViewModel {
                 try repository.deleteCircleDetail(id: id)
             }
             UserDefaults.standard.set(self.parentItem.id, forKey: "selected.id")
+            NotificationCenter.default.post(name: Notification.Name("RELOAD_HOME"), object: nil)
         } catch {
             // Xử lý lỗi
             print("Error: \(error)")
         }
+    }
+    
+    func loadDefault() {
+        
     }
 }

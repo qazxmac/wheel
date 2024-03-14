@@ -37,10 +37,10 @@
                             <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qVY-PM-ru0">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fel-LT-RSi">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="Back"/>
@@ -52,16 +52,17 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="fel-LT-RSi" firstAttribute="leading" secondItem="qVY-PM-ru0" secondAttribute="leading" id="G3L-ey-Bqo"/>
+                                        <constraint firstAttribute="width" constant="80" id="XcN-Lw-c7q"/>
                                         <constraint firstAttribute="bottom" secondItem="fel-LT-RSi" secondAttribute="bottom" id="YV7-FE-sO5"/>
                                         <constraint firstAttribute="trailing" secondItem="fel-LT-RSi" secondAttribute="trailing" id="ap1-l4-tBI"/>
                                         <constraint firstItem="fel-LT-RSi" firstAttribute="top" secondItem="qVY-PM-ru0" secondAttribute="top" id="qvT-Zm-nEC"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w10-bI-MCZ">
-                                    <rect key="frame" x="100" y="0.0" width="193" height="50"/>
+                                    <rect key="frame" x="80" y="0.0" width="233" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex: What's for lunch?" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ncf-S7-W6U">
-                                            <rect key="frame" x="10" y="5" width="173" height="40"/>
+                                            <rect key="frame" x="10" y="5" width="213" height="40"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="20"/>
                                             <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -76,10 +77,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lz1-cA-BSU">
-                                    <rect key="frame" x="293" y="0.0" width="100" height="50"/>
+                                    <rect key="frame" x="313" y="0.0" width="80" height="50"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHS-Wf-iYW">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="Save"/>
@@ -100,6 +101,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="4ft-ai-1gc"/>
+                                <constraint firstItem="lz1-cA-BSU" firstAttribute="width" secondItem="qVY-PM-ru0" secondAttribute="width" id="o1X-XH-HRh"/>
                                 <constraint firstAttribute="height" constant="50" id="xOo-Tp-vd0"/>
                             </constraints>
                         </stackView>
