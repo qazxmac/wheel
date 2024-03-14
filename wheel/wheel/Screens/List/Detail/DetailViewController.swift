@@ -45,7 +45,7 @@ class DetailViewController: UIViewController {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            tbvDetail.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+            tbvDetail.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height + 30, right: 0)
         }
     }
 

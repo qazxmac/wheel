@@ -54,7 +54,9 @@ class ViewController: UIViewController {
     
     @objc func handleNotification3s() {
         lottieCatScratch.isHidden = false
-        lottieCatScratch.play()
+        lottieCatScratch.play { [weak self] completed in
+            self?.lottieCatScratch.isHidden = true
+        }
     }
     
     @objc func handleNotificationReloadHome() {
@@ -126,8 +128,6 @@ extension ViewController: HomeViewModelDelegate {
     
     func didSetResult() {
         print("=========== \(vm.result)")
-        
-        lottieCatScratch.isHidden = true
         if let ressult = vm.result {
             lblResult.text = ressult.content
             lottieFirework.isHidden = false
