@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lblResult: UILabel!
     @IBOutlet weak var lottieCatScratch: LottieAnimationView!
     @IBOutlet weak var lottieFirework: LottieAnimationView!
+    @IBOutlet weak var lottieThunder: LottieAnimationView!
     @IBOutlet weak var lblList: UILabel!
     
     var vcListViewController: ListViewController?
@@ -30,6 +31,7 @@ class ViewController: UIViewController {
         vm.loadData()
         lottieCatScratch.loopMode = .playOnce
         lottieFirework.loopMode = .loop
+        lottieThunder.loopMode = .playOnce
         
         // Đăng ký nhận thông báo
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification3s), name: Notification.Name("ROTATE_ALMOST_DONE_3S"), object: nil)
@@ -78,6 +80,10 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 1, animations: { [weak self] in
             self?.uvBlackCorver.alpha = 1.0
         })
+        lottieThunder.isHidden = false
+        lottieThunder.play { [weak self] completed in
+            self?.lottieThunder.isHidden = true
+        }
         // Xoa ket qua cu dang hien thi
         lblResult.text?.removeAll()
         lottieFirework.isHidden = true

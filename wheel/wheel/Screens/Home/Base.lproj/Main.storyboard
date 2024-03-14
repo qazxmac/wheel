@@ -286,6 +286,13 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="cat-scratch"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view hidden="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="g4T-tv-0sk" customClass="LottieAnimationView" customModule="Lottie">
+                                <rect key="frame" x="0.0" y="0.0" width="2106" height="852"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="thunder"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -293,7 +300,10 @@
                             <constraint firstItem="LIe-er-o1M" firstAttribute="centerX" secondItem="RJw-Al-RC1" secondAttribute="centerX" id="18S-QS-7u7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ETU-2j-YDi" secondAttribute="bottom" id="5C4-ll-NVI"/>
                             <constraint firstItem="jF3-Oe-tWi" firstAttribute="centerX" secondItem="RJw-Al-RC1" secondAttribute="centerX" id="5Vj-Hu-48d"/>
+                            <constraint firstItem="g4T-tv-0sk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5ZD-NT-HX8"/>
+                            <constraint firstItem="g4T-tv-0sk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="6h5-fD-aDr"/>
                             <constraint firstItem="8lD-hJ-8li" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ENM-TP-IRm"/>
+                            <constraint firstAttribute="bottom" secondItem="g4T-tv-0sk" secondAttribute="bottom" id="EQh-hb-dfN"/>
                             <constraint firstItem="RJw-Al-RC1" firstAttribute="top" secondItem="8lD-hJ-8li" secondAttribute="bottom" id="FD2-Wm-4Uf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8lD-hJ-8li" secondAttribute="trailing" id="LXy-UX-BPP"/>
                             <constraint firstItem="RJw-Al-RC1" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="N2g-ut-9AY"/>
@@ -316,6 +326,7 @@
                             <constraint firstItem="RJw-Al-RC1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="f1h-c0-4M4"/>
                             <constraint firstAttribute="width" secondItem="jF3-Oe-tWi" secondAttribute="width" id="gJ9-jp-piP"/>
                             <constraint firstItem="F80-WR-B1b" firstAttribute="leading" secondItem="RJw-Al-RC1" secondAttribute="leading" id="h48-aG-Yws"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="g4T-tv-0sk" secondAttribute="trailing" id="jD2-x7-qJ4"/>
                             <constraint firstItem="WYo-4K-IvL" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="20" id="ojV-64-6gQ"/>
                             <constraint firstItem="8lD-hJ-8li" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qz6-3q-FDS"/>
                             <constraint firstItem="J4D-qe-7n3" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="r2L-HD-eob"/>
@@ -330,6 +341,7 @@
                         <outlet property="lblResult" destination="5sx-Oy-bdN" id="I7B-H9-mlF"/>
                         <outlet property="lottieCatScratch" destination="F80-WR-B1b" id="bE2-v5-ECG"/>
                         <outlet property="lottieFirework" destination="vK8-iv-Qyr" id="njx-84-2PJ"/>
+                        <outlet property="lottieThunder" destination="g4T-tv-0sk" id="WZg-GU-Fwl"/>
                         <outlet property="uvBlackCorver" destination="J4D-qe-7n3" id="492-Ed-cAJ"/>
                     </connections>
                 </viewController>

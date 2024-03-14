@@ -33,6 +33,7 @@
 		849A3A702B90335600122B27 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A3A6F2B90335600122B27 /* UIView+.swift */; };
 		849A3A732B90B55D00122B27 /* cat-scratch.json in Resources */ = {isa = PBXBuildFile; fileRef = 849A3A722B90B55D00122B27 /* cat-scratch.json */; };
 		849A3A792B90C6E800122B27 /* firework.json in Resources */ = {isa = PBXBuildFile; fileRef = 849A3A782B90C6E800122B27 /* firework.json */; };
+		84DE023B2BA2B0E100FA41E6 /* thunder.json in Resources */ = {isa = PBXBuildFile; fileRef = 84DE023A2BA2B0E000FA41E6 /* thunder.json */; };
 		84EB484C2B916B50005CFA33 /* go.json in Resources */ = {isa = PBXBuildFile; fileRef = 84EB484B2B916B50005CFA33 /* go.json */; };
 		84EEACB02B94532300E61239 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EEACAE2B94532300E61239 /* ListTableViewCell.swift */; };
 		84EEACB12B94532300E61239 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EEACAF2B94532300E61239 /* ListTableViewCell.xib */; };
@@ -69,6 +70,7 @@
 		849A3A6F2B90335600122B27 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		849A3A722B90B55D00122B27 /* cat-scratch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "cat-scratch.json"; sourceTree = "<group>"; };
 		849A3A782B90C6E800122B27 /* firework.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = firework.json; sourceTree = "<group>"; };
+		84DE023A2BA2B0E000FA41E6 /* thunder.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = thunder.json; sourceTree = "<group>"; };
 		84EB484B2B916B50005CFA33 /* go.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = go.json; sourceTree = "<group>"; };
 		84EEACAE2B94532300E61239 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		84EEACAF2B94532300E61239 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				849A3A782B90C6E800122B27 /* firework.json */,
 				84EB484B2B916B50005CFA33 /* go.json */,
 				845467372B95818F00949EE9 /* button.json */,
+				84DE023A2BA2B0E000FA41E6 /* thunder.json */,
 			);
 			path = Configs;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DE023B2BA2B0E100FA41E6 /* thunder.json in Resources */,
 				8478B7FA2B900DB1006AF480 /* LaunchScreen.storyboard in Resources */,
 				845467382B95819000949EE9 /* button.json in Resources */,
 				849A3A732B90B55D00122B27 /* cat-scratch.json in Resources */,
