@@ -94,7 +94,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         
         let data = vm.items[indexPath.row]
         cell.tfValue.text = data.content
-        cell.tfValue.placeholder = "Option \(indexPath.row+1)"
+        cell.tfValue.placeholder = "Empty piece"
         
         cell.onTapDelete = { [weak self] in
             self?.vm.removePiece(at: indexPath.row)

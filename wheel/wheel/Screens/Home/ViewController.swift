@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import AVFAudio
 
 class ViewController: UIViewController {
     
@@ -54,6 +55,7 @@ class ViewController: UIViewController {
     
     @objc func handleNotification3s() {
         lottieCatScratch.isHidden = false
+        SoundManager.playSound(named: "cat1.mp3", duration: 2.0, delay: 1.5)
         lottieCatScratch.play { [weak self] completed in
             self?.lottieCatScratch.isHidden = true
         }
@@ -76,6 +78,10 @@ class ViewController: UIViewController {
     
     @IBAction func tapStart(_ sender: Any) {
         
+        // Gọi hàm playSound với tên âm thanh và thời gian phát
+        SoundManager.playSound(named: "thunder1.mp3", duration: 2.0)
+        SoundManager.playSound(named: "gear1.mp3")
+        
         // Nen den dan
         uvBlackCorver.alpha = 0.0
         uvBlackCorver.isHidden = false
@@ -91,6 +97,7 @@ class ViewController: UIViewController {
         lottieFirework.isHidden = true
         
         circleView.rotateView(view: circleView) { [weak self] id in
+            SoundManager.stopAllSounds()
             // Xoa nen den
             self?.uvBlackCorver.isHidden = true
             guard let self = self, let id = id else { return }
