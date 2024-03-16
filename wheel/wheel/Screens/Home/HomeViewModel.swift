@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 protocol HomeViewModelProtocol {
     var models: [CircleDetailModel] { get set }
     var result: CircleDetailModel? { get }
@@ -90,7 +88,7 @@ final class HomeViewModel: HomeViewModelProtocol {
                 models = fetchedData
                 
             } else {
-                print("empty")
+                print("empty-------------")
             }
         } catch {
             // Xử lý lỗi
