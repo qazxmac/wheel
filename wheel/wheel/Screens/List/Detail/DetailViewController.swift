@@ -25,6 +25,9 @@ class DetailViewController: UIViewController {
         tbvDetail.register(UINib(nibName: "DetailMoreTableViewCell", bundle: nil), forCellReuseIdentifier: "DetailMoreTableViewCell")
         tbvDetail.rowHeight = 60.0
         tfTitle.delegate = self
+        // Thêm target cho sự kiện editingChanged
+        tfTitle.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
         vm.delegate = self
         vm.fetchPieces()
     }
@@ -68,6 +71,15 @@ class DetailViewController: UIViewController {
             nav.dismiss(animated: true)
         }
         self.dismiss(animated: true)
+    }
+    
+    @objc func textFieldDidChange() {
+        // Lấy giá trị của textField
+        if let text = tfTitle.text {
+            // Xử lý logic với giá trị text ở đây
+            print(text)
+            vm.parentTitle = text
+        }
     }
     
     
@@ -127,25 +139,6 @@ extension DetailViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         
         // Xử lý logic khi bấm nút "Done" ở đây
-        
-        return true
-    }
-    
-    // Phương thức gọi mỗi khi có ký tự nhập vào textField
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        if textField != tfTitle { return true }
-        
-        // Lấy giá trị của textField sau khi nhập ký tự mới
-        if let text = textField.text,
-           let range = Range(range, in: text) {
-            let updatedText = text.replacingCharacters(in: range, with: string)
-            
-            // Xử lý logic với updatedText ở đây
-            
-            print(updatedText)
-            vm.parentTitle = updatedText
-        }
         
         return true
     }
