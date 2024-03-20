@@ -15,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        RemoteConfigManager.setupRemoteConfig()
+        
         if !UserDefaults.standard.bool(forKey: "opened") {
             loadDefault()
         }

@@ -45,6 +45,22 @@ class ViewController: UIViewController {
             self?.vcListViewController = ListViewController(nibName: "ListViewController", bundle: nil)
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        RemoteConfigManager.checkRequireUpdate { [weak self] url in
+            
+            guard let self = self,
+                    let url = url 
+            else { return }
+            
+            UIAlertController.showAlertWithCancelAndUpdate(from: self, title: "Update", message: "A new version of the app is available. Please update to continue using.", updateButtonTitle: "Update") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+            
+        }
+    }
 
     // Xử lý thông báo
     @objc func handleNotification1s() {

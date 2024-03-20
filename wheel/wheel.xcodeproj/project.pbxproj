@@ -16,6 +16,10 @@
 		843071072B92C3F000534FE9 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843071062B92C3F000534FE9 /* DetailViewModel.swift */; };
 		8430710A2B93147D00534FE9 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843071092B93147D00534FE9 /* Models.swift */; };
 		8430710D2B931CE400534FE9 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8430710C2B931CE400534FE9 /* RealmRepository.swift */; };
+		844802062BAA7E95004CE9C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 844802052BAA7E95004CE9C0 /* GoogleService-Info.plist */; };
+		844802082BAA8934004CE9C0 /* RemoteConfigKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 844802072BAA8934004CE9C0 /* RemoteConfigKeys.plist */; };
+		8448020A2BAAA130004CE9C0 /* RemoteConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844802092BAAA130004CE9C0 /* RemoteConfigManager.swift */; };
+		8448020C2BAAA16F004CE9C0 /* UIAlertController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448020B2BAAA16F004CE9C0 /* UIAlertController+.swift */; };
 		845467352B95764100949EE9 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845467332B95764100949EE9 /* DetailTableViewCell.swift */; };
 		845467362B95764100949EE9 /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845467342B95764100949EE9 /* DetailTableViewCell.xib */; };
 		8454673B2B95BBE700949EE9 /* DetailMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845467392B95BBE700949EE9 /* DetailMoreTableViewCell.swift */; };
@@ -53,6 +57,10 @@
 		843071062B92C3F000534FE9 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		843071092B93147D00534FE9 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		8430710C2B931CE400534FE9 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
+		844802052BAA7E95004CE9C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		844802072BAA8934004CE9C0 /* RemoteConfigKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RemoteConfigKeys.plist; sourceTree = "<group>"; };
+		844802092BAAA130004CE9C0 /* RemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigManager.swift; sourceTree = "<group>"; };
+		8448020B2BAAA16F004CE9C0 /* UIAlertController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+.swift"; sourceTree = "<group>"; };
 		845467332B95764100949EE9 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		845467342B95764100949EE9 /* DetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
 		845467392B95BBE700949EE9 /* DetailMoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMoreTableViewCell.swift; sourceTree = "<group>"; };
@@ -165,6 +173,7 @@
 			children = (
 				849A3A6A2B902F2100122B27 /* Extension+ */,
 				849A3A632B902E6100122B27 /* CircleView.swift */,
+				844802092BAAA130004CE9C0 /* RemoteConfigManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -184,6 +193,8 @@
 			children = (
 				8478B7F62B900DB1006AF480 /* Assets.xcassets */,
 				8478B7FB2B900DB1006AF480 /* Info.plist */,
+				844802052BAA7E95004CE9C0 /* GoogleService-Info.plist */,
+				844802072BAA8934004CE9C0 /* RemoteConfigKeys.plist */,
 				8478B7ED2B900DAD006AF480 /* AppDelegate.swift */,
 				8478B7EF2B900DAD006AF480 /* SceneDelegate.swift */,
 				849A3A722B90B55D00122B27 /* cat-scratch.json */,
@@ -202,6 +213,7 @@
 				849A3A662B902EA600122B27 /* UIColor+.swift */,
 				849A3A6F2B90335600122B27 /* UIView+.swift */,
 				8461D35D2BA4333E000811D1 /* AVFoundation+.swift */,
+				8448020B2BAAA16F004CE9C0 /* UIAlertController+.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -316,6 +328,7 @@
 			files = (
 				84DE023B2BA2B0E100FA41E6 /* thunder.json in Resources */,
 				8478B7FA2B900DB1006AF480 /* LaunchScreen.storyboard in Resources */,
+				844802062BAA7E95004CE9C0 /* GoogleService-Info.plist in Resources */,
 				849A3A732B90B55D00122B27 /* cat-scratch.json in Resources */,
 				843070FE2B92C37800534FE9 /* ListViewController.xib in Resources */,
 				843071052B92C3DF00534FE9 /* DetailViewController.xib in Resources */,
@@ -327,6 +340,7 @@
 				849A3A792B90C6E800122B27 /* firework.json in Resources */,
 				8478B7F52B900DAE006AF480 /* Main.storyboard in Resources */,
 				8461D3622BA43892000811D1 /* gear1.mp3 in Resources */,
+				844802082BAA8934004CE9C0 /* RemoteConfigKeys.plist in Resources */,
 				8461D3642BA444D6000811D1 /* cat1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,10 +395,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				849A3A642B902E6100122B27 /* CircleView.swift in Sources */,
+				8448020C2BAAA16F004CE9C0 /* UIAlertController+.swift in Sources */,
 				8454673B2B95BBE700949EE9 /* DetailMoreTableViewCell.swift in Sources */,
 				849A3A6E2B90308300122B27 /* HomeViewModel.swift in Sources */,
 				849A3A702B90335600122B27 /* UIView+.swift in Sources */,
 				845467352B95764100949EE9 /* DetailTableViewCell.swift in Sources */,
+				8448020A2BAAA130004CE9C0 /* RemoteConfigManager.swift in Sources */,
 				8430710A2B93147D00534FE9 /* Models.swift in Sources */,
 				8478B7F22B900DAD006AF480 /* ViewController.swift in Sources */,
 				8478B7EE2B900DAD006AF480 /* AppDelegate.swift in Sources */,
