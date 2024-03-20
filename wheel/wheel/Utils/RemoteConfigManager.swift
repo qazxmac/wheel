@@ -18,40 +18,50 @@ class RemoteConfigManager {
         remoteConfig.setDefaults(fromPlist: "RemoteConfigKeys")
     }
     
-    static func checkRequireUpdate(completion: @escaping (URL?) -> Void) {
+    static func checkRequireUpdate(completion: @escaping (RemoteConfigModel) -> Void) {
         let remoteConfig = RemoteConfig.remoteConfig()
-        
-        // Thiết lập giá trị mặc định cho phiên bản ứng dụng
+
+        // Set default values for the app version
         let defaultConfig: [String: Any] = [
-            "app_version": "1.0.0", // Phiên bản mặc định của ứng dụng
-            "app_store_url": "" // URL App Store mặc định
+            "app_version": "1.0.0", // Default app version
+            "app_store_url": "" // Default App Store URL
         ]
         remoteConfig.setDefaults(defaultConfig as? [String: NSObject])
-        
-        // Lấy giá trị từ Remote Config
+
+        // Fetch values from Remote Config
         remoteConfig.fetch { (status, error) in
             if status == .success {
                 remoteConfig.activate { (changed, error) in
-                    let remoteVersion = remoteConfig["app_version"].stringValue ?? ""
+                    let remoteVersion = remoteConfig["app_version"].stringValue ?? "1.0.0"
                     let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
-                    
+
                     print("---RemoteConfig--- app_version : \(remoteVersion)")
-                    // So sánh phiên bản hiện tại với phiên bản từ Remote Config
+
+                    // Compare the current version with the version from Remote Config
                     if remoteVersion.compare(currentVersion, options: .numeric) == .orderedDescending {
                         let appStoreURLString = remoteConfig["app_store_url"].stringValue ?? ""
                         if let appStoreURL = URL(string: appStoreURLString) {
-                            completion(appStoreURL)
+                            let remoteConfigModel = RemoteConfigModel(version: remoteVersion, appStoreURL: appStoreURL)
+                            completion(remoteConfigModel)
                             print("---RemoteConfig--- appStoreURL : \(appStoreURL)")
                         } else {
-                            completion(nil)
+                            let remoteConfigModel = RemoteConfigModel(version: remoteVersion, appStoreURL: nil)
+                            completion(remoteConfigModel)
                         }
                     } else {
-                        completion(nil)
+                        let remoteConfigModel = RemoteConfigModel(version: remoteVersion, appStoreURL: nil)
+                        completion(remoteConfigModel)
                     }
                 }
             } else {
-                completion(nil)
+                let remoteConfigModel = RemoteConfigModel(version: "1.0.0", appStoreURL: nil)
+                completion(remoteConfigModel)
             }
         }
     }
+}
+
+struct RemoteConfigModel {
+    let version: String
+    let appStoreURL: URL?
 }

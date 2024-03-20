@@ -49,16 +49,25 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        RemoteConfigManager.checkRequireUpdate { [weak self] url in
-            
-            guard let self = self,
-                    let url = url 
-            else { return }
-            
-            UIAlertController.showAlertWithCancelAndUpdate(from: self, title: "Update", message: "A new version of the app is available. Please update to continue using.", updateButtonTitle: "Update") {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        checkUpdate()
+    }
+    
+    private func checkUpdate() {
+        RemoteConfigManager.checkRequireUpdate { [weak self] remoteConfigModel in
+            guard let self = self else { return }
+
+            if remoteConfigModel.version != "1.0.0" && remoteConfigModel.appStoreURL == nil {
+                return
             }
-            
+
+            let url = remoteConfigModel.appStoreURL ?? URL(string: "https://apps.apple.com/us/app/magicwheel/id6479553648")!
+            UIAlertController.showAlertWithCancelAndUpdate(from: self,
+                                                           title: "Update",
+                                                           message: "A new version of the app is available. Please update to continue using.",
+                                                           updateButtonTitle: "Update") { [weak self] in
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                self?.checkUpdate()
+            }
         }
     }
 
